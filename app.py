@@ -236,7 +236,7 @@ def llm_generate_sql(question: str, schema_text: str) -> str:
 
 # ------------- UI -------------
 st.set_page_config(page_title="AI SQL Generator", layout="wide")
-st.title("🧠➡️🗃️ AI-Powered SQL Query Generator")
+st.title("AI-Powered SQL Query Generator")
 st.caption(
     "Ask a question in plain English. I’ll generate **SELECT-only** SQL for your uploaded data "
     "or the bundled Telco database and run it."
@@ -277,12 +277,20 @@ schema_text = get_full_schema(conn)
 with st.expander("See table schema"):
     st.code(schema_text)
 
+# --- Generic examples that make sense for any dataset ---
 examples = [
-    "Show churn rate by contract type",
-    "Breakdown of churn by payment method",
-    "Average monthly charges for churned vs not churned customers",
-    "Churn rate by tenure buckets (0-12, 13-24, 25-48, 49+)",
+    "How many rows are in this dataset?",
+    "Top 10 values of <a categorical column> by count",
+    "Average <a numeric column> by <a categorical column>",
+    "Percentage of rows where <a flag/condition> is true",
+    "Count by <category1> and <category2>",
+    "Min, max, and average of <a numeric column>",
+    "Show rows where <a column> is NULL and count them",
+    "Top 20 categories by average <a numeric column>",
+    "Distribution of <a numeric column> using buckets (0-10, 11-20, ...)",
+    "Trend of counts by <a date column> by month (if available)",
 ]
+
 st.write("**Examples:**")
 st.write(" • " + "\n • ".join(examples))
 
