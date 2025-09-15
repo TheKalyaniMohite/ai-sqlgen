@@ -1,0 +1,18 @@
+# secrets & local env
+.env
+.venv/
+__pycache__/
+
+# editors / OS cruft
+.vs/
+.DS_Store
+*.sqlite
+
+# streamlit local state
+.streamlit/
+
+# data files you don't need in repo
+data/*.csv
+
+# keep telco.db checked in for the live demo
+# (note: the pattern above ignores only CSVs, not .db)
